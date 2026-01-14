@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 const aboutContent = [
   {
@@ -18,23 +19,47 @@ const aboutContent = [
 
 export const AboutSection = () => {
   const { isDark } = useTheme();
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: imageRef, isVisible: imageVisible } = useScrollAnimation();
+  const { ref: contentRef, isVisible: contentVisible } = useScrollAnimation();
 
   return (
-    <section id="about" className={`py-20 px-6 ${isDark ? 'bg-gray-800/50' : 'bg-white'}`}>
+    <section id="about" className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 ${isDark ? 'bg-gray-800/50' : 'bg-white'}`}>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">About Me</h2>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className={`${isDark ? 'bg-gray-800' : 'bg-gray-100'} rounded-2xl p-12 flex items-center justify-center`}>
+        <h2 
+          ref={titleRef}
+          className={`text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center transition-all duration-700 ${
+            titleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'
+          }`}
+        >
+          About Me
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
+          <div 
+            ref={imageRef}
+            className={`${isDark ? 'bg-gray-800' : 'bg-gray-100'} rounded-2xl p-6 sm:p-8 md:p-12 flex items-center justify-center transition-all duration-700 ${
+              imageVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-12'
+            }`}
+          >
             <div className="text-center">
-              <div className="w-48 h-48 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4"></div>
-              <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm`}>프로필 이미지</p>
+              <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 mx-auto mb-4"></div>
+              <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-xs sm:text-sm`}>프로필 이미지</p>
             </div>
           </div>
-          <div className="space-y-6">
+          <div 
+            ref={contentRef}
+            className="space-y-4 sm:space-y-6"
+          >
             {aboutContent.map((item, index) => (
-              <div key={index}>
-                <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}>
+              <div 
+                key={index}
+                className={`transition-all duration-700 ${
+                  contentVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-12'
+                }`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-4">{item.title}</h3>
+                <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} text-sm sm:text-base leading-relaxed`}>
                   {item.description}
                 </p>
               </div>
