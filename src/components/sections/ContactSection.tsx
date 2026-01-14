@@ -2,15 +2,16 @@ import React from 'react';
 import { Mail, Github } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { CONTACT } from '../../data/contact';
 
 const contactLinks = [
   {
-    href: 'mailto:your.email@example.com',
+    href: CONTACT.email,
     icon: Mail,
     label: '이메일 보내기'
   },
   {
-    href: 'https://github.com/hs-2171117-yeyoungyang',
+    href: CONTACT.github,
     icon: Github,
     label: 'GitHub',
     external: true
