@@ -19,7 +19,7 @@ import PythonIcon from '@/assets/icons/python.svg?react';
 import CIcon from '@/assets/icons/c.svg?react';
 import CppIcon from '@/assets/icons/cpp.svg?react';
 import MySQLIcon from '@/assets/icons/mysql.svg?react';
-// import OracleIcon from '@/assets/icons/oracle.svg?react';
+import OracleIcon from '@/assets/icons/oracle.svg?react';
 import VisualStudioIcon from '@/assets/icons/visualstudio.svg?react';
 import XcodeIcon from '@/assets/icons/xcode.svg?react';
 import EclipseIcon from '@/assets/icons/eclipseide.svg?react';
@@ -47,7 +47,7 @@ const iconMap: Record<string, React.FC<React.SVGProps<SVGSVGElement>>> = {
   c: CIcon,
   cpp: CppIcon,
   mysql: MySQLIcon,
-  // oracle: OracleIcon,
+  oracle: OracleIcon,
   visualstudio: VisualStudioIcon,
   xcode: XcodeIcon,
   eclipse: EclipseIcon,
