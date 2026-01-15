@@ -3,7 +3,7 @@ import { useTheme } from '../contexts/ThemeContext';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { Navigation } from '../components/layout/Navigation';
 import { Footer } from '../components/layout/Footer';
-import { HeroSection } from '../components/sections/HeroSection';
+import { HeroSection } from '../components/sections/IntroSection';
 import { AboutSection } from '../components/sections/AboutSection';
 import { SkillsSection } from '../components/sections/SkillsSection';
 import { ProjectsSection } from '../components/sections/ProjectsSection';
