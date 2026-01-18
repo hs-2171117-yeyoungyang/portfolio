@@ -5,7 +5,8 @@ export interface Project {
   tech: string[];
   awards?: string[];
   role: string;
-  image: string;
+  image?: string;
+  github?: string;
 }
   
 export interface Skill {

@@ -3,6 +3,7 @@ import { useTheme } from '../../contexts/ThemeContext';
 import type { Project } from '../../types';
 import { TechBadge } from './TechBadge';
 import { AwardBadge } from './AwardBadge';
+import GithubIcon from '../../assets/icons/github.svg';
 
 interface ProjectCardProps {
   project: Project;
@@ -17,8 +18,34 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         isDark ? 'border-gray-700' : 'border-gray-200'
       } hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]`}
     >
-      <div className={`h-48 ${isDark ? 'bg-gray-700' : 'bg-gray-300'} flex items-center justify-center`}>
-        <p className={`${isDark ? 'text-gray-500' : 'text-gray-400'}`}>프로젝트 이미지</p>
+      <div className={`relative h-70 ${isDark ? 'bg-gray-700' : 'bg-gray-300'} flex items-center justify-center`}>
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={`${project.title} 이미지`}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <p className={`${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
+            프로젝트 이미지
+          </p>
+        )}
+
+        {/* GitHub 링크 */}
+        {project.github && (
+          <a
+            href={project.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute top-3 right-3 bg-white/90 hover:bg-white p-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+          >
+            <img
+              src={GithubIcon}
+              alt="GitHub"
+              className="w-5 h-5"
+            />
+          </a>
+        )}
       </div>
       <div className="p-6">
         <div className="flex justify-between items-start mb-3">
