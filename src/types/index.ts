@@ -7,6 +7,7 @@ export interface Project {
   role: string;
   image?: string;
   github?: string;
+  teamSize?: number;
 }
   
 export interface Skill {

@@ -16,6 +16,7 @@ export const projects: Project[] = [
     role: "약 검색 및 상세정보 UI 구현, AI 음성 챗봇 및 보호자 케어 인터페이스 구성",
     image: MedeasyImg,
     github: "https://github.com/team-medeasy/medeasy-frontend",
+    teamSize: 5,
   },
   {
     title: "PLog",
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     role: "부하 테스트 실행 페이지 UI 구현, 테스트 결과 보고서 생성 및 PDF 변환 기능",
     image: PlogImg,
     github: "https://github.com/team-Plog/plog-frontend",
+    teamSize: 5,
   },
   {
     title: "수북(Book)",
@@ -34,6 +36,7 @@ export const projects: Project[] = [
     role: "요구사항 분석에 따른 전체적인 화면 UI/UX 설계 및 구현",
     image: SoobookImg,
     github: "https://github.com/Advanced-MobileProgramming/flutter",
+    teamSize: 4,
   },
   {
     title: "Rummikub With Chat",
@@ -43,6 +46,7 @@ export const projects: Project[] = [
     role: "오픈소스 기반 게임 로직 수정, 소켓 통신, GUI 설계 및 구현",
     image: RummikubwithchatImg,
     github: "https://github.com/RummikubWithChat/RummikubWithChat",
+    teamSize: 2,
   },
   {
     title: "LookUpTheSky",
@@ -52,6 +56,7 @@ export const projects: Project[] = [
     role: "기상청 API 연동, UI/UX 설계, 인터페이스 및 기능 구현",
     image: LookuptheskyImg,
     github: "https://github.com/hs-2171117-yeyoungyang/LookUpTheSky",
+    teamSize: 1,
   },
   {
     title: "Daymond",
@@ -61,5 +66,6 @@ export const projects: Project[] = [
     role: "UI/UX 설계, 사진 기반 자동 테마 생성 기능 구현",
     image: DaymondImg,
     github: "https://github.com/hs-2171117-yeyoungyang/Daymond",
+    teamSize: 1,
   }
 ];

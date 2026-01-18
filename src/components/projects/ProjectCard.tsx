@@ -50,9 +50,21 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
       <div className="p-6">
         <div className="flex justify-between items-start mb-3">
           <h3 className="text-2xl font-bold">{project.title}</h3>
-          <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-            {project.period}
-          </span>
+          <div className="flex items-center gap-2">
+            <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+              {project.period}
+            </span>
+            {project.teamSize && (
+              <>
+                <span className={`text-sm ${isDark ? 'text-gray-600' : 'text-gray-400'}`}>
+                  |
+                </span>
+                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  {project.teamSize === 1 ? '개인' : `${project.teamSize}인 팀`}
+                </span>
+              </>
+            )}
+          </div>
         </div>
         <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'} mb-4`}>
           {project.description}
