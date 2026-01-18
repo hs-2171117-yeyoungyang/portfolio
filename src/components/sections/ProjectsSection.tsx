@@ -1,13 +1,21 @@
 import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useTooltipAnimation } from '../../hooks/useTooltipAnimation';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../projects/ProjectCard';
+import { Tooltip } from '../common/Tooltip';
 
 export const ProjectsSection = () => {
   const { isDark } = useTheme();
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
+  
+  const showTooltip = useTooltipAnimation({ 
+    enabled: gridVisible && projects.length > 0 && !!projects[0].github,
+    showDelay: 1500,
+    hideDelay: 5000
+  });
 
   return (
     <section id="projects" className={`py-12 sm:py-16 md:py-20 px-4 sm:px-6 ${isDark ? 'bg-gray-800/50' : 'bg-white'}`}>
@@ -24,12 +32,19 @@ export const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`transition-all duration-700 ${
+              className={`relative transition-all duration-700 ${
                 gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
               <ProjectCard project={project} />
+              
+              {/* 첫 번째 프로젝트에만 툴팁 표시 */}
+              {index === 0 && project.github && (
+                <div className="absolute top-3 right-3 pointer-events-none">
+                  <Tooltip message="더 자세히 알아보기" show={showTooltip} />
+                </div>
+              )}
             </div>
           ))}
         </div>

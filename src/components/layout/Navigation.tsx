@@ -28,7 +28,7 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#hero" className="text-xl font-bold">
-          Portfolio
+          YYY portfolio
         </a>
         <div className="flex items-center gap-6">
           {navItems.map((item) => (
