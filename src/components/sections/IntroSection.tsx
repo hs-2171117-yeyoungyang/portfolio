@@ -5,13 +5,17 @@ import { scrollToSection } from '../../utils/scroll';
 import { useHeroAnimation } from '../../hooks/useIntroAnimation';
 import { GradientBackground } from './GradientBackground';
 import { ParticleEffect } from './ParticleEffect';
+import { LinearGradientBackground } from './LinearGradientBackground';
 
 export const HeroSection = () => {
   const { isDark } = useTheme();
-  const { colorIntensity, exploded, particles, showContent } = useHeroAnimation(isDark);
+  const { colorIntensity, exploded, particles, showContent, showLinearBackground } = useHeroAnimation(isDark);
 
   return (
     <section id="hero" className={`min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+      {/* 선형 그라디언트 배경 */}
+      <LinearGradientBackground isDark={isDark} show={showLinearBackground} />
+
       {/* 원형 그라디언트 배경 */}
       <GradientBackground 
         isDark={isDark}

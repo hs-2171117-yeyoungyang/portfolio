@@ -13,6 +13,7 @@ interface UseHeroAnimationReturn {
   exploded: boolean;
   particles: Particle[];
   showContent: boolean;
+  showLinearBackground: boolean;
 }
 
 export const useHeroAnimation = (isDark: boolean): UseHeroAnimationReturn => {
@@ -20,6 +21,7 @@ export const useHeroAnimation = (isDark: boolean): UseHeroAnimationReturn => {
   const [exploded, setExploded] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);
   const [showContent, setShowContent] = useState(false);
+  const [showLinearBackground, setShowLinearBackground] = useState(false);
 
   useEffect(() => {
     let startTime: number | null = null;
@@ -45,6 +47,10 @@ export const useHeroAnimation = (isDark: boolean): UseHeroAnimationReturn => {
         setTimeout(() => {
           setExploded(true);
           setShowContent(true);
+
+          setTimeout(() => {
+            setShowLinearBackground(true);
+          }, ANIMATION_CONFIG.backgroundFadeInDelay);
           
           const newParticles: Particle[] = Array.from({ length: particleCount }, (_, i) => ({
             id: i,
@@ -63,5 +69,5 @@ export const useHeroAnimation = (isDark: boolean): UseHeroAnimationReturn => {
     requestAnimationFrame(animate);
   }, [isDark]);
 
-  return { colorIntensity, exploded, particles, showContent };
+  return { colorIntensity, exploded, particles, showContent, showLinearBackground };
 };
