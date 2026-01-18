@@ -3,6 +3,8 @@ import { useTheme } from '../../contexts/ThemeContext';
 import { NavLink } from '../common/NavLink';
 import { ThemeToggle } from '../common/ThemeToggle';
 import type { SectionId } from '../../types';
+import LogoLight from '../../assets/icons/logo-light.svg';
+import LogoDark from '../../assets/icons/logo-dark.svg';
 
 interface NavigationProps {
   activeSection: SectionId;
@@ -27,9 +29,14 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#hero" className="text-xl font-bold">
-          YYY portfolio
+        <a href="#hero" className="flex items-center gap-2">
+          <img
+            src={isDark ? LogoDark : LogoLight}
+            alt="YYY Portfolio Logo"
+            className="h-8 w-15 transition-opacity duration-300"
+          />
         </a>
+        <span></span>
         <div className="flex items-center gap-6">
           {navItems.map((item) => (
             <NavLink
