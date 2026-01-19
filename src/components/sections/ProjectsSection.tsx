@@ -4,7 +4,6 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { useTooltipAnimation } from '../../hooks/useTooltipAnimation';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../projects/ProjectCard';
-import { Tooltip } from '../common/Tooltip';
 
 export const ProjectsSection = () => {
   const { isDark } = useTheme();
@@ -32,19 +31,16 @@ export const ProjectsSection = () => {
           {projects.map((project, index) => (
             <div
               key={index}
-              className={`relative transition-all duration-700 ${
+              className={`transition-all duration-700 ${
                 gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
               style={{ transitionDelay: `${index * 200}ms` }}
             >
-              <ProjectCard project={project} />
-              
               {/* 첫 번째 프로젝트에만 툴팁 표시 */}
-              {index === 0 && project.github && (
-                <div className="absolute top-3 right-3 pointer-events-none">
-                  <Tooltip message="더 자세히 알아보기" show={showTooltip} />
-                </div>
-              )}
+              <ProjectCard 
+                project={project} 
+                showTooltip={index === 0 && showTooltip}
+              />
             </div>
           ))}
         </div>

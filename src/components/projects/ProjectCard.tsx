@@ -3,13 +3,15 @@ import { useTheme } from '../../contexts/ThemeContext';
 import type { Project } from '../../types';
 import { TechBadge } from './TechBadge';
 import { AwardBadge } from './AwardBadge';
+import { Tooltip } from '../common/Tooltip';
 import GithubIcon from '../../assets/icons/github.svg';
 
 interface ProjectCardProps {
   project: Project;
+  showTooltip?: boolean;
 }
 
-export const ProjectCard = ({ project }: ProjectCardProps) => {
+export const ProjectCard = ({ project, showTooltip = false }: ProjectCardProps) => {
   const { isDark } = useTheme();
 
   return (
@@ -31,20 +33,29 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           </p>
         )}
 
-        {/* GitHub 링크 */}
+        {/* GitHub 링크와 툴팁 */}
         {project.github && (
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-3 right-3 bg-white/90 hover:bg-white p-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-          >
-            <img
-              src={GithubIcon}
-              alt="GitHub"
-              className="w-5 h-5"
-            />
-          </a>
+          <div className="absolute top-3 right-3">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative block bg-white/90 hover:bg-white p-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+            >
+              <img
+                src={GithubIcon}
+                alt="GitHub"
+                className="w-5 h-5"
+              />
+              
+              {/* 툴팁 - GitHub 아이콘 바로 위에 표시 */}
+              <Tooltip 
+                content="더 자세히 알아보기" 
+                show={showTooltip}
+                position="left"
+              />
+            </a>
+          </div>
         )}
       </div>
       <div className="p-6">
