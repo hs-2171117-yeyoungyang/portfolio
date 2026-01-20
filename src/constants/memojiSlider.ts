@@ -1,7 +1,7 @@
 import type { MemojiAnimationConfig, MemojiStyleConfig } from '../types';
 
 export const ANIMATION_CONFIG: MemojiAnimationConfig = {
-  autoSlideInterval: 5000,
+  autoSlideInterval: 2500,
   transitionDuration: 1000,
   animationDelay: 200,
   pauseOnHover: true,

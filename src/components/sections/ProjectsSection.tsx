@@ -2,6 +2,7 @@ import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 import { useTooltipAnimation } from '../../hooks/useTooltipAnimation';
+import { ANIMATION_CONFIG } from '../../constants/tooltip';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../projects/ProjectCard';
 
@@ -10,10 +11,8 @@ export const ProjectsSection = () => {
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
   
-  const showTooltip = useTooltipAnimation({ 
-    enabled: gridVisible && projects.length > 0 && !!projects[0].github,
-    showDelay: 1500,
-    hideDelay: 5000
+  const { show: showTooltip, hideTooltip } = useTooltipAnimation({ 
+    enabled: gridVisible && projects.length > 0 && !!projects[0].github
   });
 
   return (
@@ -34,12 +33,12 @@ export const ProjectsSection = () => {
               className={`transition-all duration-700 ${
                 gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
               }`}
-              style={{ transitionDelay: `${index * 200}ms` }}
+              style={{ transitionDelay: `${index * ANIMATION_CONFIG.staggerDelay}ms` }}
             >
-              {/* 첫 번째 프로젝트에만 툴팁 표시 */}
               <ProjectCard 
                 project={project} 
                 showTooltip={index === 0 && showTooltip}
+                onTooltipDismiss={index === 0 ? hideTooltip : undefined}
               />
             </div>
           ))}

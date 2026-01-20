@@ -1,0 +1,33 @@
+@keyframes tooltip-float {
+  0%, 100% {
+    transform: translate(var(--tooltip-translate-x, 0), calc(var(--tooltip-translate-y, 0) + 0px));
+  }
+  50% {
+    transform: translate(var(--tooltip-translate-x, 0), calc(var(--tooltip-translate-y, 0) - 8px));
+  }
+}
+
+.animate-tooltip-float {
+  animation: tooltip-float 2s ease-in-out infinite;
+}
+
+/* position별 기본 translate 값 설정 */
+.animate-tooltip-float.position-top {
+  --tooltip-translate-x: -50%;
+  --tooltip-translate-y: 0;
+}
+
+.animate-tooltip-float.position-bottom {
+  --tooltip-translate-x: -50%;
+  --tooltip-translate-y: 0;
+}
+
+.animate-tooltip-float.position-left {
+  --tooltip-translate-x: 0;
+  --tooltip-translate-y: -50%;
+}
+
+.animate-tooltip-float.position-right {
+  --tooltip-translate-x: 0;
+  --tooltip-translate-y: -50%;
+}

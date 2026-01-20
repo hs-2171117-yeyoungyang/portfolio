@@ -9,10 +9,21 @@ import GithubIcon from '../../assets/icons/github.svg';
 interface ProjectCardProps {
   project: Project;
   showTooltip?: boolean;
+  onTooltipDismiss?: () => void;
 }
 
-export const ProjectCard = ({ project, showTooltip = false }: ProjectCardProps) => {
+export const ProjectCard = ({ 
+  project, 
+  showTooltip = false,
+  onTooltipDismiss
+}: ProjectCardProps) => {
   const { isDark } = useTheme();
+
+  const handleMouseEnter = () => {
+    if (onTooltipDismiss) {
+      onTooltipDismiss();
+    }
+  };
 
   return (
     <div
@@ -40,6 +51,7 @@ export const ProjectCard = ({ project, showTooltip = false }: ProjectCardProps) 
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
+              onMouseEnter={handleMouseEnter}
               className="relative block bg-white/90 hover:bg-white p-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
             >
               <img
@@ -53,6 +65,7 @@ export const ProjectCard = ({ project, showTooltip = false }: ProjectCardProps) 
                 content="더 자세히 알아보기" 
                 show={showTooltip}
                 position="left"
+                animate={true}
               />
             </a>
           </div>
