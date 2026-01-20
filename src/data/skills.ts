@@ -1,62 +1,21 @@
 import type { SkillCategory } from '../types';
 
 export const skills: SkillCategory = {
-  Frontend: [
-    {
-      name: 'React',
-      icon: 'react',
-      color: '#61DAFB',
-    },
-    {
-      name: 'TypeScript',
-      icon: 'typescript',
-      color: '#3178C6',
-    },
-    {
-      name: 'JavaScript',
-      icon: 'javascript',
-      color: '#F7DF1E',
-    },
-  ],
-
-  Mobile: [
-    {
-      name: 'React Native',
-      icon: 'react',
-      color: '#61DAFB',
-    },
-    {
-      name: 'Flutter',
-      icon: 'flutter',
-      color: '#02569B',
-    },
-    {
-      name: 'Swift',
-      icon: 'swift',
-      color: '#F05138',
-    },
-    {
-      name: 'Android',
-      icon: 'android',
-      color: '#3DDC84',
-    },
-    {
-      name: 'iOS',
-      icon: 'apple',
-      color: '#000000',
-    },
-  ],
-
-  Backend: [
+  Language: [
     {
       name: 'Java',
       icon: 'java',
       color: '#007396',
     },
     {
-      name: 'Spring / Spring Boot',
-      icon: 'spring',
-      color: '#6DB33F',
+      name: 'JavaScript',
+      icon: 'javascript',
+      color: '#F7DF1E',
+    },
+    {
+      name: 'TypeScript',
+      icon: 'typescript',
+      color: '#3178C6',
     },
     {
       name: 'Python',
@@ -74,9 +33,50 @@ export const skills: SkillCategory = {
       color: '#00599C',
     },
     {
+      name: 'Swift',
+      icon: 'swift',
+      color: '#F05138',
+    },
+  ],
+
+  Frontend: [
+    {
+      name: 'React',
+      icon: 'react',
+      color: '#61DAFB',
+    },
+    {
+      name: 'React Native',
+      icon: 'react',
+      color: '#61DAFB',
+    },
+    {
+      name: 'Flutter',
+      icon: 'flutter',
+      color: '#02569B',
+    },
+    {
+      name: 'CSS',
+      icon: 'css',
+      color: '#663399',
+    },
+    {
+      name: 'Tailwind CSS',
+      icon: 'tailwind',
+      color: '#06B6D4',
+    },
+  ],
+
+  Backend: [
+    {
+      name: 'Spring / Spring Boot',
+      icon: 'spring',
+      color: '#6DB33F',
+    },
+    {
       name: 'REST API',
       icon: 'api',
-      color: '#6B7280',
+      color: '#000000',
     },
   ],
 
@@ -115,16 +115,6 @@ export const skills: SkillCategory = {
       color: '#5C2D91',
     },
     {
-      name: 'Xcode',
-      icon: 'xcode',
-      color: '#147EFB',
-    },
-    {
-      name: 'Android Studio',
-      icon: 'androidstudio',
-      color: '#3DDC84',
-    },
-    {
       name: 'IntelliJ IDEA',
       icon: 'intellij',
       color: '#000000',
@@ -134,9 +124,19 @@ export const skills: SkillCategory = {
       icon: 'eclipse',
       color: '#2C2255',
     },
+    {
+      name: 'Xcode',
+      icon: 'xcode',
+      color: '#147EFB',
+    },
+    {
+      name: 'Android Studio',
+      icon: 'androidstudio',
+      color: '#3DDC84',
+    },
   ],
 
-  'OS & Others': [
+  'OS & Design': [
     {
       name: 'Linux',
       icon: 'linux',
