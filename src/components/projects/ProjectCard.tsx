@@ -8,12 +8,14 @@ import GithubIcon from '../../assets/icons/github.svg';
 
 interface ProjectCardProps {
   project: Project;
+  onProjectClick: (project: Project) => void;
   showTooltip?: boolean;
   onTooltipDismiss?: () => void;
 }
 
 export const ProjectCard = ({ 
-  project, 
+  project,
+  onProjectClick,
   showTooltip = false,
   onTooltipDismiss
 }: ProjectCardProps) => {
@@ -25,11 +27,16 @@ export const ProjectCard = ({
     }
   };
 
+  const handleCardClick = () => {
+    onProjectClick(project);
+  };
+
   return (
     <div
+      onClick={handleCardClick}
       className={`${isDark ? 'bg-gray-800' : 'bg-gray-50'} rounded-2xl overflow-hidden border ${
         isDark ? 'border-gray-700' : 'border-gray-200'
-      } hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]`}
+      } hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] cursor-pointer`}
     >
       <div className={`relative h-70 ${isDark ? 'bg-gray-700' : 'bg-gray-300'} flex items-center justify-center`}>
         {project.image ? (
@@ -52,6 +59,7 @@ export const ProjectCard = ({
               target="_blank"
               rel="noopener noreferrer"
               onMouseEnter={handleMouseEnter}
+              onClick={(e) => e.stopPropagation()}
               className="relative block bg-white/90 hover:bg-white p-2.5 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
             >
               <img
@@ -76,7 +84,7 @@ export const ProjectCard = ({
           <h3 className="text-2xl font-bold">{project.title}</h3>
           <div className="flex items-center gap-2">
             <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-              {project.period}
+              {project.year}
             </span>
             {project.teamSize && (
               <>

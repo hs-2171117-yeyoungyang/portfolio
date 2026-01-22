@@ -2,6 +2,7 @@
 export interface Project {
   title: string;
   period: string;
+  year: String,
   description: string;
   tech: string[];
   awards?: string[];
@@ -9,6 +10,9 @@ export interface Project {
   image?: string;
   github?: string;
   teamSize?: number;
+  detailDescription?: string;
+  achievements?: string;
+  learnings?: string;
 }
 
 // Skill

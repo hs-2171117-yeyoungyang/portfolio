@@ -5,8 +5,13 @@ import { useTooltipAnimation } from '../../hooks/useTooltipAnimation';
 import { ANIMATION_CONFIG } from '../../constants/tooltip';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '../projects/ProjectCard';
+import type { Project } from '../../types';
 
-export const ProjectsSection = () => {
+interface ProjectsSectionProps {
+  onProjectClick: (project: Project) => void;
+}
+
+export const ProjectsSection = ({ onProjectClick }: ProjectsSectionProps) => {
   const { isDark } = useTheme();
   const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
   const { ref: gridRef, isVisible: gridVisible } = useScrollAnimation();
@@ -36,7 +41,8 @@ export const ProjectsSection = () => {
               style={{ transitionDelay: `${index * ANIMATION_CONFIG.staggerDelay}ms` }}
             >
               <ProjectCard 
-                project={project} 
+                project={project}
+                onProjectClick={onProjectClick}
                 showTooltip={index === 0 && showTooltip}
                 onTooltipDismiss={index === 0 ? hideTooltip : undefined}
               />
