@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import type { Project } from '../../types';
 import { TechBadge } from './TechBadge';
@@ -20,6 +20,7 @@ export const ProjectCard = ({
   onTooltipDismiss
 }: ProjectCardProps) => {
   const { isDark } = useTheme();
+  const [showRoleTooltip, setShowRoleTooltip] = useState(true);
 
   const handleMouseEnter = () => {
     if (onTooltipDismiss) {
@@ -30,6 +31,13 @@ export const ProjectCard = ({
   const handleCardClick = () => {
     onProjectClick(project);
   };
+
+  const handleRoleTitleHover = () => {
+    setShowRoleTooltip(false);
+  };
+
+  // 역할을 쉼표로 구분
+  const rolesText = project.role.join(', ');
 
   return (
     <div
@@ -68,7 +76,6 @@ export const ProjectCard = ({
                 className="w-5 h-5"
               />
               
-              {/* 툴팁 - GitHub 아이콘 바로 위에 표시 */}
               <Tooltip 
                 content="더 자세히 알아보기" 
                 show={showTooltip}
@@ -109,11 +116,24 @@ export const ProjectCard = ({
           </div>
         )}
         <div className="mb-4">
-          <p className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'} mb-2`}>
-            주요 역할
-          </p>
-          <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-            {project.role}
+          <div className="flex items-center gap-2 mb-2">
+            <p className={`text-sm ${isDark ? 'text-gray-500' : 'text-gray-500'}`}>
+              주요 역할
+            </p>
+            <div 
+              className="relative inline-block"
+              onMouseEnter={handleRoleTitleHover}
+            >
+              <Tooltip 
+                content="전체 내용 보기" 
+                show={showRoleTooltip}
+                position="right"
+                animate={true}
+              />
+            </div>
+          </div>
+          <p className={`text-sm ${isDark ? 'text-gray-300' : 'text-gray-700'} line-clamp-1`}>
+            {rolesText}
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
