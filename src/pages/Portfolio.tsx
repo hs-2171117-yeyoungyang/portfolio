@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useTheme } from '../contexts/ThemeContext';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { Navigation } from '../components/layout/Navigation';

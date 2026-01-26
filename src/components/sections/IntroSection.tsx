@@ -1,4 +1,3 @@
-import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { scrollToSection } from '../../utils/scroll';

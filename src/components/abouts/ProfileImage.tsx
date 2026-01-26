@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useMemojiSlider } from '../../hooks/useMemojiSlider';
 import { memojiItems } from '../../data/memojis';

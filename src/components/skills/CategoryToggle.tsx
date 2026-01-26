@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface CategoryToggleProps {
   categories: string[];
   selectedCategory: string | null;

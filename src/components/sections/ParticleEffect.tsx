@@ -1,4 +1,3 @@
-import React from 'react';
 import { ANIMATION_CONFIG } from '../../constants/introAnimation';
 
 interface Particle {

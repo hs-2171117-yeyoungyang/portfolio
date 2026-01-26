@@ -1,4 +1,3 @@
-import React from 'react';
 import { Mail, Github } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';

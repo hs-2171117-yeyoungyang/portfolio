@@ -1,5 +1,3 @@
-import React from 'react';
-
 import ReactIcon from '@/assets/icons/react.svg?react';
 import TypeScriptIcon from '@/assets/icons/typescript.svg?react';
 import JavaScriptIcon from '@/assets/icons/javascript.svg?react';

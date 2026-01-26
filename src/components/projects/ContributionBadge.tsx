@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAnimatedPercentage } from '../../hooks/usePercentageAnimation';
 
 interface ContributionBadgeProps {

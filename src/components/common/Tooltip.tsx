@@ -1,4 +1,3 @@
-import React from 'react';
 import { TOOLTIP_POSITION_CONFIG } from '../../constants/tooltip';
 import '../../styles/Tooltip.css'
 

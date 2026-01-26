@@ -1,4 +1,3 @@
-import React from 'react';
 import { LINEAR_GRADIENT_CONFIG, ANIMATION_CONFIG } from '../../constants/introAnimation';
 
 interface LinearGradientBackgroundProps {

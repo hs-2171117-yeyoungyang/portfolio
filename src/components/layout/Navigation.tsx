@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { NavLink } from '../common/NavLink';
 import { ThemeToggle } from '../common/ThemeToggle';
