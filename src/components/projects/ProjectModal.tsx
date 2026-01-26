@@ -127,26 +127,44 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
         <div className={`${isDark ? 'bg-gray-900 bg-opacity-80' : 'bg-white bg-opacity-80'} rounded-3xl p-6 sm:p-8 shadow-lg`}>
           <div className="mb-6">
             <h3 className="text-xl font-bold mb-3">주요 역할</h3>
-            <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-              {project?.detailDescription || project?.role}
-            </p>
+            <ul className="space-y-2">
+              {project.role.map((item, i) => (
+                <li
+                  key={i}
+                  className={`${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed flex`}
+                >
+                  <span className="mr-2">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {project?.achievements && (
             <div className="mb-6">
               <h3 className="text-xl font-bold mb-3">성과</h3>
-              <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-                {project.achievements}
-              </p>
+              <ul className="space-y-2">
+                {project.achievements.map((item, i) => (
+                  <li key={i} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} flex`}>
+                    <span className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 
           {project?.learnings && (
             <div className="mb-6">
               <h3 className="text-xl font-bold mb-3">느낀 점</h3>
-              <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-                {project.learnings}
-              </p>
+              <ul className="space-y-2">
+                {project.learnings.map((item, i) => (
+                  <li key={i} className={`${isDark ? 'text-gray-300' : 'text-gray-700'} flex`}>
+                    <span className="mr-2">•</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
 

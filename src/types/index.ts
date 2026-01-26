@@ -6,13 +6,12 @@ export interface Project {
   description: string;
   tech: string[];
   awards?: string[];
-  role: string;
+  role: string[];
   image?: string;
   github?: string;
   teamSize?: number;
-  detailDescription?: string;
-  achievements?: string;
-  learnings?: string;
+  achievements?: string[];
+  learnings?: string[];
 }
 
 // Skill
