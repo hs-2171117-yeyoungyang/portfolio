@@ -12,6 +12,12 @@ export interface Project {
   teamSize?: number;
   achievements?: string[];
   learnings?: string[];
+  contributions?: Contribution[];
+}
+
+export interface Contribution {
+  label: string;
+  percentage: number;
 }
 
 // Skill

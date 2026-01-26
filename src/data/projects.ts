@@ -20,6 +20,9 @@ export const projects: Project[] = [
     image: MedeasyImg,
     github: "https://github.com/team-medeasy/medeasy-frontend",
     teamSize: 5,
+    contributions: [
+      { label: "FE", percentage: 30 }
+    ],
 
     role: [
       "약 검색 및 상세정보 UI 구현",
@@ -50,6 +53,9 @@ export const projects: Project[] = [
     image: PlogImg,
     github: "https://github.com/team-Plog/plog-frontend",
     teamSize: 5,
+    contributions: [
+      { label: "FE", percentage: 50 }
+    ],
 
     role: [
       "부하 테스트 실행 페이지 UI 구현",
@@ -80,6 +86,10 @@ export const projects: Project[] = [
     image: SoobookImg,
     github: "https://github.com/Advanced-MobileProgramming/flutter",
     teamSize: 4,
+    contributions: [
+      { label: "FE", percentage: 50 },
+      { label: "UI/UX", percentage: 50 }
+    ],
 
     role: [
       "요구사항 분석을 기반으로 전체 화면 UI/UX 설계",
@@ -109,6 +119,10 @@ export const projects: Project[] = [
     image: RummikubwithchatImg,
     github: "https://github.com/RummikubWithChat/RummikubWithChat",
     teamSize: 2,
+    contributions: [
+      { label: "Server & Network Logic", percentage: 70 },
+      { label: "FE", percentage: 40 }
+    ],
 
     role: [
       "오픈소스 기반 게임 로직 분석 및 수정",
@@ -139,6 +153,10 @@ export const projects: Project[] = [
     image: LookuptheskyImg,
     github: "https://github.com/hs-2171117-yeyoungyang/LookUpTheSky",
     teamSize: 1,
+    contributions: [
+      { label: "UI/UX", percentage: 100 },
+      { label: "FE", percentage: 100 }
+    ],
 
     role: [
       "Android Studio 환경에서 애플리케이션 설계 및 구현",
@@ -168,6 +186,10 @@ export const projects: Project[] = [
     image: DaymondImg,
     github: "https://github.com/hs-2171117-yeyoungyang/Daymond",
     teamSize: 1,
+    contributions: [
+      { label: "UI/UX", percentage: 100 },
+      { label: "FE", percentage: 100 }
+    ],
 
     role: [
       "Xcode 환경에서 iOS 애플리케이션 기획 및 구현",

@@ -3,9 +3,9 @@ import { useTheme } from '../../contexts/ThemeContext';
 import type { Project } from '../../types';
 import { TechBadge } from './TechBadge';
 import { AwardBadge } from './AwardBadge';
+import { ContributionBadge } from './ContributionBadge';
 import GithubIcon from '../../assets/icons/github.svg';
 import { X } from 'lucide-react';
-
 
 interface ProjectModalProps {
   project: Project | null;
@@ -73,7 +73,7 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
         }}
       >
         <div className={`${isDark ? 'bg-gray-900 bg-opacity-80' : 'bg-white bg-opacity-80'} rounded-3xl mb-6 shadow-lg overflow-hidden`}>
-          {/* 이미지 영역 (padding 없음) */}
+          {/* 이미지 영역 */}
           {project?.image && (
             <div className="w-full aspect-video">
               <img
@@ -84,29 +84,50 @@ export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) =>
             </div>
           )}
 
-          {/* 콘텐츠 영역 (padding 적용) */}
+          {/* 콘텐츠 영역 */}
           <div className="p-6 sm:p-8">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              {project.title}
-            </h2>
+            <div className="flex flex-wrap items-baseline gap-4 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold">
+                {project.title}
+              </h2>
 
-            <div className="flex flex-wrap items-center gap-3 mb-4">
-              <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                {project.period}
-              </span>
-              {project.teamSize && (
-                <>
-                  <span className="text-gray-400">|</span>
-                  <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-                    {project.teamSize === 1 ? '개인 프로젝트' : `${project.teamSize}인 팀 프로젝트`}
-                  </span>
-                </>
-              )}
+              <div className="flex flex-wrap items-center gap-3">
+                <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                  {project.period}
+                </span>
+                {project.teamSize && (
+                  <>
+                    <span className="text-gray-400">|</span>
+                    <span className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
+                      {project.teamSize === 1
+                        ? '개인 프로젝트'
+                        : `${project.teamSize}인 팀 프로젝트`}
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
 
             <p className={`text-lg ${isDark ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
               {project.description}
             </p>
+
+            {/* 기여도 섹션 */}
+            {project?.contributions && project.contributions.length > 0 && (
+              <div className="mb-4">
+                <div className="flex flex-wrap gap-3">
+                  {project.contributions.map((contribution, i) => (
+                    <ContributionBadge 
+                      key={i} 
+                      label={contribution.label} 
+                      percentage={contribution.percentage}
+                      delay={i * 100}
+                      isDark={isDark}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
 
             {project?.awards && project.awards.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-4">
