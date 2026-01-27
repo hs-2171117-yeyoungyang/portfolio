@@ -33,7 +33,7 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
           src={isDark ? LogoDark : LogoLight}
           alt="YYY Portfolio Logo"
           className="
-            h-10 sm:h-9 md:h-8
+            h-8 sm:h-9 md:h-10
             w-auto
             transition-opacity duration-300
           "
