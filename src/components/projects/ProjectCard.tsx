@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { useTheme } from '../../contexts/ThemeContext';
 import type { Project } from '../../types';
 import { TechBadge } from './TechBadge';
 import { AwardBadge } from './AwardBadge';
 import { Tooltip } from '../common/Tooltip';
+import { ImageLoadingSkeleton } from '../common/ImageLoadingSkeleton';
+import { ImagePlaceholder } from '../common/ImagePlaceholder';
 import GithubIcon from '../../assets/icons/github.svg';
 
 interface ProjectCardProps {
@@ -14,6 +17,8 @@ interface ProjectCardProps {
 
   showRoleHint?: boolean;
   dismissRoleHint?: () => void;
+  
+  isLoading?: boolean; // 전체 카드 로딩 상태
 }
 
 export const ProjectCard = ({
@@ -23,8 +28,11 @@ export const ProjectCard = ({
   dismissGithubHint,
   showRoleHint = false,
   dismissRoleHint,
+  isLoading = false,
 }: ProjectCardProps) => {
   const { isDark } = useTheme();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   const handleGithubHover = () => {
     dismissGithubHint?.();
@@ -36,6 +44,12 @@ export const ProjectCard = ({
 
   const rolesText = project.role.join(', ');
 
+  // 전체 카드가 로딩 중이면 별도 처리 가능
+  if (isLoading) {
+    // ProjectCardSkeleton 컴포넌트를 사용할 수도 있음
+    return null;
+  }
+
   return (
     <div
       onClick={() => onProjectClick(project)}
@@ -46,18 +60,29 @@ export const ProjectCard = ({
       <div
         className={`relative h-70 ${
           isDark ? 'bg-gray-700' : 'bg-gray-300'
-        } flex items-center justify-center`}
+        } flex items-center justify-center overflow-hidden`}
       >
-        {project.image ? (
-          <img
-            src={project.image}
-            alt={`${project.title} 이미지`}
-            className="w-full h-full object-cover"
-          />
+        {project.image && !imageError ? (
+          <>
+            {/* 로딩 스켈레톤 */}
+            {!imageLoaded && <ImageLoadingSkeleton isDark={isDark} />}
+
+            {/* 실제 이미지 */}
+            <img
+              src={project.image}
+              alt={`${project.title} 이미지`}
+              className={`w-full h-full object-cover transition-opacity duration-500 ${
+                imageLoaded ? 'opacity-100' : 'opacity-0'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => {
+                setImageError(true);
+                setImageLoaded(false);
+              }}
+            />
+          </>
         ) : (
-          <p className={`${isDark ? 'text-gray-500' : 'text-gray-400'}`}>
-            프로젝트 이미지
-          </p>
+          <ImagePlaceholder isDark={isDark} hasError={imageError} />
         )}
 
         {project.github && (
