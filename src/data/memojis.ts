@@ -1,19 +1,23 @@
 import type { MemojiItem } from '../types';
 
+import SmilingMemoji from '@/assets/memojis/smiling.svg';
+import LaptopMemoji from '@/assets/memojis/laptop.svg';
+import IdeaMemoji from '@/assets/memojis/idea.svg';
+
 export const memojiItems: readonly MemojiItem[] = [
   {
-    src: '/src/assets/memojis/smiling.svg',
+    image: SmilingMemoji,
     alt: '웃는 미모티콘',
-    description: 'Hello🤚'
+    description: 'Hello🤚',
   },
   {
-    src: '/src/assets/memojis/laptop.svg',
+    image: LaptopMemoji,
     alt: '노트북 보는 미모티콘',
-    description: 'Coding...'
+    description: 'Coding...',
   },
   {
-    src: '/src/assets/memojis/idea.svg',
+    image: IdeaMemoji,
     alt: '아이디어 떠올리는 미모티콘',
-    description: 'Thinking!'
-  }
+    description: 'Thinking!',
+  },
 ] as const;

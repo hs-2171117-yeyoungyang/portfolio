@@ -35,7 +35,7 @@ export type SectionId = 'hero' | 'about' | 'skills' | 'projects' | 'contact';
 
 // Memoji
 export interface MemojiItem {
-  src: string;
+  image: string;
   alt: string;
   description: string;
 }

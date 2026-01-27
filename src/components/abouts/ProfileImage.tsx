@@ -37,7 +37,7 @@ export const ProfileImage: React.FC<ProfileImageProps> = ({ isVisible }) => {
               }`}
             >
               <img
-                src={memoji.src}
+                src={memoji.image}
                 alt={memoji.alt}
                 className="w-full h-full object-contain drop-shadow-2xl"
               />
