@@ -29,11 +29,15 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#hero" className="flex items-center gap-2">
-          <img
-            src={isDark ? LogoDark : LogoLight}
-            alt="YYY Portfolio Logo"
-            className="h-8 w-15 transition-opacity duration-300"
-          />
+        <img
+          src={isDark ? LogoDark : LogoLight}
+          alt="YYY Portfolio Logo"
+          className="
+            h-10 sm:h-9 md:h-8
+            w-auto
+            transition-opacity duration-300
+          "
+        />
         </a>
         <span></span>
         <div className="flex items-center gap-6">
