@@ -8,7 +8,7 @@ interface Particle {
   color: string;
 }
 
-interface UseHeroAnimationReturn {
+interface UseIntroAnimationReturn {
   colorIntensity: number;
   exploded: boolean;
   particles: Particle[];
@@ -16,7 +16,7 @@ interface UseHeroAnimationReturn {
   showLinearBackground: boolean;
 }
 
-export const useHeroAnimation = (isDark: boolean): UseHeroAnimationReturn => {
+export const useIntroAnimation = (isDark: boolean): UseIntroAnimationReturn => {
   const [colorIntensity, setColorIntensity] = useState(0);
   const [exploded, setExploded] = useState(false);
   const [particles, setParticles] = useState<Particle[]>([]);

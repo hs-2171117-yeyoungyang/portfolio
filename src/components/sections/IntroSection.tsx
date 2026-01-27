@@ -1,17 +1,18 @@
 import { ChevronDown } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 import { scrollToSection } from '../../utils/scroll';
-import { useHeroAnimation } from '../../hooks/useIntroAnimation';
-import { GradientBackground } from './GradientBackground';
-import { ParticleEffect } from './ParticleEffect';
-import { LinearGradientBackground } from './LinearGradientBackground';
+import { useIntroAnimation } from '../../hooks/useIntroAnimation';
+import { GradientBackground } from '../intros/GradientBackground';
+import { ParticleEffect } from '../intros/ParticleEffect';
+import { LinearGradientBackground } from '../intros/LinearGradientBackground';
+import { Button } from '../common/Button';
 
-export const HeroSection = () => {
+export const IntroSection = () => {
   const { isDark } = useTheme();
-  const { colorIntensity, exploded, particles, showContent, showLinearBackground } = useHeroAnimation(isDark);
+  const { colorIntensity, exploded, particles, showContent, showLinearBackground } = useIntroAnimation(isDark);
 
   return (
-    <section id="hero" className={`min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
+    <section id="intro" className={`min-h-screen flex items-center justify-center px-4 sm:px-6 relative overflow-hidden ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
       {/* 선형 그라디언트 배경 */}
       <LinearGradientBackground isDark={isDark} show={showLinearBackground} />
 
@@ -46,16 +47,15 @@ export const HeroSection = () => {
           사용자 경험을 최우선으로 생각하며,<br />
           끊임없이 성장하는 개발자입니다.
         </p>
-        <button
+        <Button
           onClick={() => scrollToSection('projects')}
-          className={`px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base font-medium transition-all duration-1000 delay-400 ${
-            isDark ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'
-          } text-white ${
+          isDark={isDark}
+          className={`transition-all duration-1000 delay-400 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
           프로젝트 보기
-        </button>
+        </Button>
         <div 
           className={`mt-12 sm:mt-16 animate-bounce transition-all duration-1000 delay-700 ${
             showContent ? 'opacity-100' : 'opacity-0'
