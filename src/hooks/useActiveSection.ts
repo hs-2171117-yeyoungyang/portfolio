@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import type { SectionId } from '../types';
 
 export const useActiveSection = () => {
-  const [activeSection, setActiveSection] = useState<SectionId>('hero');
+  const [activeSection, setActiveSection] = useState<SectionId>('intro');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +16,7 @@ export const useActiveSection = () => {
       }
 
       const sections: SectionId[] = [
-        'hero',
+        'intro',
         'about',
         'skills',
         'projects',
