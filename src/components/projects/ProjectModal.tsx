@@ -71,7 +71,8 @@ export const ProjectModal = ({ project, isOpen, onClose, isLoading = false }: Pr
       </button>
 
       <div
-        className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto p-6
+        className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto
+          p-3 sm:p-6
           ${isDark ? 'bg-gray-800 bg-opacity-80' : 'bg-white bg-opacity-80'}
           rounded-2xl shadow-2xl scrollbar-hide`}
         onClick={(e) => e.stopPropagation()}

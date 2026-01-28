@@ -31,7 +31,7 @@ export interface SkillCategory {
   [category: string]: Skill[];
 }  
 
-export type SectionId = 'hero' | 'about' | 'skills' | 'projects' | 'contact';
+export type SectionId = 'intro' | 'about' | 'skills' | 'projects' | 'contact';
 
 // Memoji
 export interface MemojiItem {
