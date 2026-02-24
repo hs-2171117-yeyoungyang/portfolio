@@ -19,8 +19,20 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
     { href: '#about', label: 'About', id: 'about' },
     { href: '#skills', label: 'Skills', id: 'skills' },
     { href: '#projects', label: 'Projects', id: 'projects' },
-    { href: '#contact', label: 'Contact', id: 'contact' }
+    { href: '#contact', label: 'Contact', id: 'contact' },
   ];
+
+  const handleSmoothScroll = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   return (
     <nav
@@ -33,7 +45,11 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-        <a href="#intro" className="flex items-center gap-2 flex-shrink-0">
+        <a
+          href="#intro"
+          onClick={(e) => handleSmoothScroll(e, '#intro')}
+          className="flex items-center gap-2 flex-shrink-0"
+        >
           <img
             src={isDark ? LogoDark : LogoLight}
             alt="YYY Portfolio Logo"
@@ -48,6 +64,7 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
               key={item.id}
               href={item.href}
               isActive={activeSection === item.id}
+              onClick={(e) => handleSmoothScroll(e, item.href)}
             >
               {item.label}
             </NavLink>
@@ -58,7 +75,11 @@ export const Navigation = ({ activeSection }: NavigationProps) => {
         {/* Mobile Navigation */}
         <div className="flex md:hidden items-center gap-3">
           <ThemeToggle />
-          <MobileMenu activeSection={activeSection} navItems={navItems} />
+          <MobileMenu
+            activeSection={activeSection}
+            navItems={navItems}
+            onNavClick={handleSmoothScroll}
+          />
         </div>
       </div>
     </nav>
