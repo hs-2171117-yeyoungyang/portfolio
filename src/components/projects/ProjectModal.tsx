@@ -20,6 +20,8 @@ export const ProjectModal = ({ project, isOpen, onClose, isLoading = false }: Pr
   const { isDark } = useTheme();
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
@@ -51,13 +53,29 @@ export const ProjectModal = ({ project, isOpen, onClose, isLoading = false }: Pr
     };
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (isOpen) {
+      setShouldRender(true);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => setIsVisible(true));
+      });
+    } else {
+      setIsVisible(false);
+      const timer = setTimeout(() => setShouldRender(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
+  if (!shouldRender) return null;
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className={`fixed inset-0 z-50 flex items-center justify-center p-4
+        transition-opacity duration-300
+        ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       onClick={onClose}
     >
+      {/* 배경 블러 */}
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
 
       <button
@@ -74,12 +92,11 @@ export const ProjectModal = ({ project, isOpen, onClose, isLoading = false }: Pr
         className={`relative w-full max-w-4xl max-h-[90vh] overflow-y-auto
           p-3 sm:p-6
           ${isDark ? 'bg-gray-800 bg-opacity-80' : 'bg-white bg-opacity-80'}
-          rounded-2xl shadow-2xl scrollbar-hide`}
+          rounded-2xl shadow-2xl scrollbar-hide
+          transition-all duration-300
+          ${isVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
         onClick={(e) => e.stopPropagation()}
-        style={{
-          scrollbarWidth: 'none',
-          msOverflowStyle: 'none',
-        }}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {/* 로딩 중이거나 프로젝트가 없을 때 스켈레톤 표시 */}
         {(isLoading || !project) ? (
